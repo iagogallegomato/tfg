@@ -18,7 +18,7 @@ const user = process.env.USER;
 const password = process.env.PASSWORD;
 const dbname = process.env.DBNAME;
 
-const uri = `mongodb+srv://${user}:${password}@tfg.bedrx56.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${user}:${password}@tfg.bedrx56.mongodb.net/${dbname}?retryWrites=true&w=majority`
 
 mongoose.connect(uri).then(() => console.log('Base de datos conectada')).catch(e => console.log(e));
 

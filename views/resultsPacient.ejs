@@ -49,7 +49,9 @@
 
                 const dates = arrayResults.map(item => item.timeStamp);
                 const points = arrayResults.map(item => item.points);
-                const times = arrayResults.map(item => item.timeDuration); 
+                const times = arrayResults.map(item => item.timeDuration);
+                
+                console.log(Math.floor(lastResult.timeDuration / 60).toString() + "." + Math.floor(lastResult.timeDuration % 60).toString());
 
                 const lastTryData = {
                     labels: ['Respuestas correctas', 'Fallos', 'Omisiones', 'Puntos', 'Tiempo empleado'],
@@ -57,7 +59,7 @@
                             label: 'Resultados del último intento',
                             data: [lastResult.guesses - lastResult.failures - lastResult.omissions, 
                                     lastResult.failures, lastResult.omissions, lastResult.points,
-                                    lastResult.timeDuration],
+                                    parseFloat(Math.floor(lastResult.timeDuration/60).toString() + "." + (Math.floor(lastResult.timeDuration % 60)).toString())],
                             backgroundColor: 'rgba(255, 99, 132, 0.6)',
                             borderColor: 'rgba(255, 99, 132, 1)',
                             borderWidth: 1
@@ -97,7 +99,7 @@
                     const timesOverTimeData = {
                         labels: dates,
                         datasets: [{
-                            label: 'Evolución de duración con el tiempo',
+                            label: 'Evolución de duración con el tiempo (en segundos)',
                             data: times,
                             backgroundColor: 'rgba(255, 99, 132, 0.6)',
                             borderColor: 'rgba(255, 99, 132, 1)',

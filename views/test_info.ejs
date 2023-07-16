@@ -1,0 +1,59 @@
+<%- include("template/header", {titulo : 'Información'}); %>
+    <div class="centered">
+
+        <h2 class="semititle">Test de las pirámides y palmeras</h2>
+        <p class="text">La prueba pirámides y palmeras fue diseñada en 1992 por Howard y Patterson. PPT es una prueba de memoria semántica que se utiliza para evaluar la cognición en trastornos cerebrales, demencia semántica, enfermedad de Alzheimer y afasia. 
+            </p><p class="text">
+            Esta prueba mide la accesibilidad a las características semánticas de las palabras e información de imágenes. Contiene 52 conjuntos de palabras o imágenes y fue diseñada para un rango de edad de 18 a 80 años. No hay límite de tiempo para realizar la prueba y se lleva a cabo de forma individual. Consta de 52 conjuntos, cada uno de ellos contiene 3 palabras o imágenes, y también 3 conjuntos de ejemplo para introducir el objetivo de la prueba a los sujetos. 
+        </p><p class="text">
+            La palabra o imagen objetivo se coloca en la parte superior de las otras 2 palabras o imágenes. Se pide al sujeto que empareje la palabra o imagen objetivo con una de las palabras o imágenes de abajo. Se ofrecen las 3 palabras o imágenes en una hoja al sujeto, y se le pide que elija una palabra o imagen que estuviera más cerca del elemento objetivo y lo señalara. La puntuación máxima de la prueba es de 52.
+            </p>
+        <p class="text">Aquí hay 3 imágenes. Tiene que decidir cuál de estas dos que están abajo va con la que está arriba. ¿Es la de la derecha
+            o la de la izquierda? Para responder deberá clicar sobre la imagen y verá si ha acertado.
+            Puede hacer una primera prueba con estas tres imágenes.</p>
+        <img src="/resources/test_images/1/up.png">
+        <div class="image-container">
+            <img id="left" class="test-img" src="/resources/test_images/1/left.png" onClick = "handleImageClick('left')">
+            <img id="right" class="test-img" src="/resources/test_images/1/right.png" onClick = "handleImageClick('right')">
+        </div>
+        <div class="text "id="message"></div>
+        <div class="text" id="explicacion"></div>
+
+        <p class="text">El test contará con 3 tríos de fotos de prueba para entender el funcionamiento de la prueba y 51 tríos de evaluación. 
+            El puntaje total es la suma de las respuestas correctas (1.0) más las omisiones (0.5 puntos). Las respuestas erróneas valen 0 puntos. </p>
+            <p></p>
+    </div>  
+
+    <script>
+        function handleImageClick(image){
+            let imageLeft = document.getElementById('left');
+            let imageRight = document.getElementById('right');
+            
+            var clickedImage = document.getElementById(image);
+            var message = document.getElementById('message');
+            var explicacion = document.getElementById('explicacion');
+            if(image == 'left') {
+                clickedImage.classList.remove('wrong');
+                clickedImage.classList.add('healthcolor');
+                imageRight.classList.remove('clicked');
+                imageLeft.classList.add('clicked');
+                message.classList.remove('wrong');
+                message.classList.add('healthcolor');
+                message.textContent = "¡Correcto! ¡Sigue así!";
+                explicacion.textContent = "Correcto, van juntas porque el chaleco y la pajarita los usan los hombres."
+            }
+
+            if(image == 'right'){
+                clickedImage.classList.remove('healthcolor');
+                clickedImage.classList.add('wrong');
+                imageLeft.classList.remove('clicked');
+                imageRight.classList.add('clicked');
+                message.classList.remove('healthcolor');
+                message.classList.add('wrong');
+                message.textContent = "¡Vaya, has fallado!";
+                explicacion.textContent = "La pajarita va con el chaleco porque los dos los usan los hombres."
+            }
+        }   
+    </script>
+
+<%- include("template/footer"); %>

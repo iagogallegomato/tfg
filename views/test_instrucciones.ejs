@@ -1,0 +1,20 @@
+<%- include("./template/header", {titulo : 'Test'}); %>
+
+<figure>
+    <section>
+        <div class="centered centered-height">
+            <h2>¡Bienvenido al test!</h2>
+            <p class="text">Primero haremos tres preguntas de prueba.</p>
+            <p class="text">En estas preguntas saldrá un texto en verde o rojo dependiendo si acierta o falla en su respuesta explicando porqué ha acertado
+                o fallado, una vez comience el test este texto dejará de aparecer y al escoger respuesta pasará directamente al siguiente trío de fotos.
+            </p>
+            <p></p>
+            <form action="./test_prueba" method="POST">
+                <input type="hidden" name="number" value="1" />
+                <input type="submit" class="button tiny-button" value="Empezar prueba" />
+            </form>
+        </div> 
+    </section>
+</figure>
+
+<%- include("./template/footer"); %>

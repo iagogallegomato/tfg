@@ -1,0 +1,98 @@
+<%- include("./template/header", {titulo : 'Test'}); %>
+
+    <figure>
+        <img src="<%= `/resources/test_images/${n}/up.png` %>">
+        <div class="image-container">
+            <img id="left" class="test-img" src="<%= `/resources/test_images/${n}/left.png` %>" onClick = "handleImageClick('left', <%= n %>)">
+            <img id="right" class="test-img" src="<%= `/resources/test_images/${n}/right.png` %>" onClick = "handleImageClick('right', <%= n %>)">
+        </div>
+        <div class="text "id="<%= 'message' + n %>"></div>
+        <div class="text" id="<%= 'explicacion' + n %>"></div>
+        <% if((Number(n)+1) == 4){ %>
+            <form action="./initResult" method="POST">
+                <input type="hidden" name="user" value="<%= hashPaciente %>" />
+                <input type="hidden" name="timeStamp" value="<%= Date.now() %>" />
+                <input type="hidden" name="timeDuration" value="0" />
+                <input type="hidden" name="guesses" value="0" />
+                <input type="hidden" name="failures" value="0" />
+                <input type="hidden" name="omissions" value="0" />
+                <input type="hidden" name="points" value="0" />
+                <input type="submit" class="button tiny-button" value="Empezar test" />
+            </form>
+        <% } else { %>
+            <form action="./test_prueba" method="POST">
+                <input type="hidden" name="number" value="<%= Number(n) + 1 %>" />
+                <input type="submit" class="button tiny-button" value="Siguiente" />
+            </form>
+        <% } %>
+    </figure>
+
+    <script>
+
+        function handleImageClick(image, n){
+            let imageLeft = document.getElementById('left');
+            let imageRight = document.getElementById('right');
+            if(image == 'left'){
+                if(n == 1){
+                    var message = document.getElementById('message1');
+                    var explicacion = document.getElementById('explicacion1');
+                    message.classList.remove('wrong');
+                    message.classList.add('healthcolor');
+                    message.textContent = "¡Correcto! ¡Sigue así!";
+                    explicacion.textContent = "Correcto, van juntas porque el chaleco y la pajarita los usan los hombres.";
+                }
+                else if(n == 2){
+                    var message = document.getElementById('message2');
+                    var explicacion = document.getElementById('explicacion2');
+                    message.classList.remove('healthcolor');
+                    message.classList.add('wrong');
+                    message.textContent = "¡Vaya, has fallado!";
+                    explicacion.textContent = "No, es la derecha porque normalmente te sirves el contenido de una botella, como un refresco, en un vaso.";
+                }
+                else if(n == 3){
+                    var message = document.getElementById('message3');
+                    var explicacion = document.getElementById('explicacion3');
+                    message.classList.remove('wrong');
+                    message.classList.add('healthcolor');
+                    message.textContent = "¡Correcto! ¡Sigue así!";
+                    explicacion.textContent = "Correcto, porque al payaso y al león los puedes encontrar en el circo.";
+                }
+                imageRight.classList.remove('clicked');
+                imageLeft.classList.add('clicked');
+                
+            } 
+            else if(image == 'right'){
+                if(n == 1){
+                    var message = document.getElementById('message1');
+                    var explicacion = document.getElementById('explicacion1');
+                    message.classList.remove('healthcolor');
+                    message.classList.add('wrong');
+                    message.textContent = "¡Vaya, has fallado!";
+                    explicacion.textContent = "La pajarita va con el chaleco porque los dos los usan los hombres.";
+                }
+                else if(n == 2){
+                    var message = document.getElementById('message2');
+                    var explicacion = document.getElementById('explicacion2');
+                    message.classList.remove('wrong');
+                    message.classList.add('healthcolor');
+                    message.textContent = "¡Correcto! ¡Sigue así!";
+                    explicacion.textContent = "Bien, vaso y botella van juntos porque normalmente te sirves el contenido en un vaso.";
+                }
+                else if(n == 3){
+                    var message = document.getElementById('message3');
+                    var explicacion = document.getElementById('explicacion3');
+                    message.classList.remove('healthcolor');
+                    message.classList.add('wrong');
+                    message.textContent = "¡Vaya, has fallado!";
+                    explicacion.textContent = "No, es la izquierda. Van juntas porque en el circo puedes encontrar al payaso y al león pero no a la jirafa.";
+                }
+                imageLeft.classList.remove('clicked');
+                imageRight.classList.add('clicked');
+            } 
+
+        }
+
+    </script>
+
+<%- include("./template/footer"); %>
+

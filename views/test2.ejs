@@ -1,0 +1,553 @@
+<%- include("./template/header", {titulo : 'Test'}); %>
+
+    <figure>
+        <p></p>
+        <h1 class="marcador"><%= Number(n) - 3 %>/51</h1>
+        <img src="<%= `/resources/test_images/${n}/up.png` %>">
+        <div class="image-container">
+            <img id="left" class="test-img" src="<%= `/resources/test_images/${n}/left.png` %>" onClick = "correct('left', <%= Number(n) %>)">
+            <img id="right" class="test-img" src="<%= `/resources/test_images/${n}/right.png` %>" onClick = "correct('right', <%= Number(n) %>)">
+        </div>
+        <form id="myForm" action="./put" method="POST">
+            <input type="hidden" name="number" value="<%= Number(n) + 1 %>" />
+            <input type="hidden" id="timform" name="timeDuration" />
+            <input type="hidden" id="guessform" name="guesses" />
+            <input type="hidden" id="failform" name="failures" />
+            <input type="hidden" id="omisform" name="omissions" />
+            <input type="hidden" id="poiform" name="points"/>
+            <input type="submit" class="button tiny-button" value="Siguiente" />
+        </form>
+    </figure>
+
+    <script>
+
+        const form = document.getElementById('myForm');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Perform your desired function here
+            console.log("NEW STATS " + window.guesses + window.failures + window.omissions);
+
+            const timeDur = document.getElementById('timform');
+            const guess = document.getElementById('guessform');
+            const fail = document.getElementById('failform');
+            const omis = document.getElementById('omisform');
+            const poi = document.getElementById('poiform');
+
+            if(!clicked){
+                if(number==0){
+                    omissions++;
+                    points+=0.5;
+                }
+                else if(number==4){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==5){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==6){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==7){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==8){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==9){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==10){ //Cual es la correcta
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==11){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==12){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==13){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==14){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==15){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==16){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==17){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==18){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==19){ //No estoy seguro
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==20){
+                    guesses++; //No estoy seguro
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==21){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==22){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==23){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==24){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==25){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==26){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==27){
+                    guesses++;
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==28){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==29){
+                    guesses++;
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==30){ //Cual es la correcta
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==31){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==32){ //No estoy seguro
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==33){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==34){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==35){ //No estoy seguro
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==36){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==37){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==38){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==39){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==40){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==41){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==42){ //No estoy seguro
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==43){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==44){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==45){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==46){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==47){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==48){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==49){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==50){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==51){
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==52){ //No estoy seguro
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==53){
+                    guesses++; 
+                    if(choice=='right'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                }
+                else if(number==54){ //No estoy seguro
+                    guesses++; 
+                    if(choice=='left'){
+                        points++;
+                    }
+                    else{
+                        failures++;
+                    }
+                    
+                }
+
+                console.log((Date.now() - window.timeStart)/1000);
+
+                window.timeDuration += (Date.now() - window.timeStart)/1000;
+            }
+
+            timeDur.value = window.timeDuration;
+            guess.value = window.guesses;
+            fail.value = window.failures;
+            omis.value = window.omissions;
+            poi.value = window.points;
+
+            // Continue with form submission if needed
+            form.submit();
+        });
+
+        window.onload = function(){
+            var n = <%= n %>;
+            window.clicked = false;
+            window.number = 0;
+            window.choice = 'center';
+            window.timeDuration = <%= timeDuration %>;
+            console.log(timeDuration);
+            window.guesses = <%= guesses %>;
+            window.failures = <%= failures %>;
+            window.omissions = <%= omissions %>;
+            window.points = <%= points %>;
+            window.timeStart = Date.now();
+        };
+
+        function correct(param1, param2){
+            console.log("Has entrado a la funcion con parametros " + param1 + param2);
+            let imageLeft = document.getElementById('left');
+            let imageRight = document.getElementById('right');
+
+            window.choice = param1;
+            window.number = param2;
+
+            if(param1=='left'){
+                imageRight.classList.remove('clicked');
+                imageLeft.classList.add('clicked');
+            }
+            else if(param1=='right'){
+                imageLeft.classList.remove('clicked');
+                imageRight.classList.add('clicked');
+            }
+        }
+
+    </script>
+
+<%- include("./template/footer"); %>

@@ -1,0 +1,60 @@
+<%- include("template/header", {titulo : 'Asignarme pacientes'}); %>
+
+<div class="container">
+  <form action="./home" method="GET">
+    <button type="submit">See patients</button>
+  </form>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">DNI</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <% if (arrayPacientes.length > 0) { %>
+            <% arrayPacientes.forEach(paciente => { %>
+                <tr>
+                    <th scope="row"><%= paciente.dni %></th>
+                    <td><%= paciente.name %></td>
+                    <td><%= paciente.email %></td>
+                    <td>
+                      <form action="./assignToMe" method="POST">
+                        <input type="hidden" name="hashPaciente" value="<%=paciente.hash%>">
+                        <input type="submit"/>
+                      </form>
+                    </td>
+                  </tr>
+            <% }) %>
+        <% } %>
+
+        </tbody>
+      </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+  function putMe(hash){
+    console.log("THIS IS THE HASH OF THE PATIENT" + hash);
+    var hashValue = '<%= hashDoctor %>'
+    axios.put(`./assignToMe/${hash}`, {
+      key: 'doctor',
+      value: hashValue
+    })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+
+  }
+
+</script>
+
+<%- include("template/footer"); %>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Pirámides y Palmeras - Resultados</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <%- include("template/navbar"); %>
+
+    <div class="centered-canvas">
+        <% if (arrayResults.length != 0){ %>
+            <h2>Estos son los resultados de <%= namePaciente %> hasta ahora</h2>
+            <div class="canvas-container-res">
+                <div class="row-canvas">
+                    <canvas id="lastTry"></canvas>
+            
+                    <% if (arrayResults.length > 1){ %>
+                        <% console.log("HOLA" + arrayResults.length); %>
+                        <canvas id="pointsOverTime"></canvas>
+                </div>
+                <div class ="row-canvas">
+                        <canvas id="timesOverTime"></canvas>
+                </div>
+                    <% } %>
+        <% } else { %>
+            <h3>Aún no tiene ningún resultado</h3>
+        </div>
+        <% } %>
+    </div>
+
+    <script>
+        window.onload = function(){
+            var arrayResults = <%- JSON.stringify(arrayResults) %>;
+            var lastResult = arrayResults[arrayResults.length - 1];
+
+            const dates = arrayResults.map(item => item.timeStamp);
+            const points = arrayResults.map(item => item.points);
+            const times = arrayResults.map(item => item.timeDuration); 
+
+            const lastTryData = {
+                labels: ['Respuestas correctas', 'Fallos', 'Omisiones', 'Puntos', 'Tiempo empleado'],
+                datasets: [{
+                        label: 'Resultados del último intento',
+                        data: [lastResult.guesses - lastResult.failures - lastResult.omissions, 
+                                lastResult.failures, lastResult.omissions, lastResult.points,
+                                lastResult.timeDuration],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+            };
+
+            const lastTryConfig = {
+                type: 'bar',
+                data: lastTryData,
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            };
+
+            const ctx1 = document.getElementById('lastTry').getContext('2d');
+
+            new Chart(ctx1, lastTryConfig);
+
+            if(arrayResults.length > 1){
+
+                const pointsOverTimeData = {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Evolución de puntuación con el tiempo',
+                        data: points,
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                };
+
+                const timesOverTimeData = {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Evolución de duración con el tiempo',
+                        data: times,
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }]
+                };
+
+                const ctx2 = document.getElementById('pointsOverTime').getContext('2d');
+                const ctx3 = document.getElementById('timesOverTime').getContext('2d');
+
+                new Chart(ctx2, {
+                    ...lastTryConfig,
+                    data: pointsOverTimeData,
+                });
+                new Chart(ctx3, {
+                    ...lastTryConfig,
+                    data: timesOverTimeData,
+                });
+            }
+        };
+
+    </script>
+
+<%- include("template/footer"); %>

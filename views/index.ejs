@@ -1,0 +1,24 @@
+<%- include("template/header", {titulo : 'Bienvenido'}); %>
+    <div class="centered">
+        <h1>¡Bienvenido al Test de Pirámides y Palmeras! </h1>
+        <p class="text">En esta página podrá realizar el test y su médico tendrá acceso a sus resultados de forma instantánea. Antes de empezar el test se le explicará el funcionamiento.</p>
+        <p class="text">¿Es usted un médico o un paciente?</p>
+    
+        <div class="flex-div centered">
+            <div class="left-side">
+                <a href= "./doctor/signup">
+                    <img class="test-img" src="./resources/profile_images/doctor2.jpg">
+                    <p>Entrar como doctor</p>
+                </a>
+            </div>
+            <div class="right-side">
+                <a href= "./paciente/signup">
+                    <img class="test-img" src="./resources/profile_images/guy2.jpg">
+                    <p>Entrar como paciente</p>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+<%- include("template/footer"); %>

@@ -1,0 +1,29 @@
+<%- include("template/header", {titulo : 'Instrucciones'}); %>
+
+    <div class="centered centered-height">
+
+        <h2>Hola <%= name %> ¿empezamos?</h2>
+        <h2></h2>
+        <p class="text">1. El test consta de 3 tríos de fotos de prueba para entender el test y 51 tríos de fotos de evaluación. </p>
+        <p class="text">2. Tu tiempo será medido y evaluado, así que ¡sea todo lo rápido que pueda! Pero no se olvide de pensar antes de contestar.</p>
+        <p class="text">3. Aparecerán tres fotos en pantalla, una arriba y dos debajo de esta. Debe elegir de las dos de abajo la que usted crea que guarda relación con la de arriba. </p>
+        <p class="text">4. Para seleccionar una de las imágenes solo tendrá que clicarla y, una vez esté seguro de su respuesta, pulsar siguiente. </p>
+        <p class="text">5. No puede volver atrás para cambiar su respuesta. </p>
+        <p></p>
+        <h2>¡Mucha suerte!</h2>
+        <p></p>
+
+        <button id="startButton" class="button">Empezar test</button>
+
+    </div>
+
+    <script>
+
+        document.getElementById("startButton").addEventListener("click", function() {
+        // Make an HTTP GET request to the desired route
+            window.location.href="./test_instrucciones";
+        });
+
+    </script>
+
+<%- include("template/footer"); %>

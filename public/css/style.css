@@ -1,0 +1,169 @@
+
+section {
+    height: 150vh;
+    padding: 5em;
+}
+
+a {
+    text-decoration: none;
+}
+
+figure {
+    text-align: center;
+}
+
+img {
+    width: 17vw;
+    height: auto;
+    margin: 1vh 1vw 1vh 1vw;
+}
+
+.test-img:hover {
+    width: 19vw;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.centered {
+    text-align: center;
+    margin: auto 20vw auto 20vw;
+}
+
+.centered-canvas {
+    text-align: center;
+    margin: auto 5vw auto 5vw;
+}
+
+.healthcolor {
+    background-color: palegreen;
+}
+
+.wrong {
+    background-color: palevioletred;
+}
+
+#message {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#explicacion {
+    font-weight: bold;
+}
+
+.text {
+    margin: 1vh auto auto auto;
+    font-size: 20px;
+}
+
+.link {
+    color: palegreen;
+    font-weight: bold;
+}
+
+.button {
+    display: inline-block;
+    padding: 1vh 10vw;
+    border: none;
+    border-radius: 4px;
+    background-color: palegreen;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button:active {
+    background-color: #003b80;
+  }
+
+  .centered-height {
+    margin-top: 10vh;
+  }
+
+  .tiny-button {
+    padding: 0.5vh 5vw;
+    margin: auto;
+    margin-top: 2vh; 
+    font-size: 15px;
+  }
+
+  .tiny-button-notfound {
+    font-size: 15px;
+  }
+
+  .canvas-container-res {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80vh;
+    margin:auto
+  }
+  
+  .row-canvas {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  canvas {
+    margin: 0 5px;
+  }
+
+  .flex-div {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+    display: flex;
+  }
+
+  .left-side, .right-side {
+    flex: 1;
+  }
+
+  .error-message {
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .error-box-login {
+    display: none;
+    border: 2px solid red;
+    background-color: #f9c6c6;
+    color: #333;
+    box-sizing: border-box;
+  }
+
+  .left, .center, .right {
+    flex: 1;
+  }
+
+  .clicked {
+    width: 19vw;
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .marcador{
+    font-size: 5vw;
+  }
+
+  .comments {
+    width: 20vw;
+    height: 90vh;
+  }
+
+  .logomed {
+    width: 2vw;
+    height: auto;
+  }
+
+  .space {
+    margin-bottom: 2vh;
+  }
+

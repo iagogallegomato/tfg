@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test de Pirámides y Palmeras - Iniciar sesión</title>
+    <link rel="stylesheet" href="/css/loginstyle.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include("template/navbar"); %>
+    
+    <div class="formcontainer centered-height">
+      <h2>Inicie sesión</h2>
+      <form id="myForm"action="/paciente/checkIfExists" method="POST">
+        <label>Email</label>
+        <input type= "email"
+        name = "email"
+        placeholder="Introduza su email"
+        required
+        />
+        <label>Contraseña</label>
+        <input type="password" 
+        name = "password"
+        placeholder="Introduzca su contraseña"
+        required/>
+        <input type="submit" />
+        
+      <closeform></closeform></form>
+      <p>
+        No está registrado? <a class="link" href="#" onclick="goBack()">Regístrese aquí</a>
+      </p>
+      <div id="error-box-login" class="error-box-login">
+        <p id="error-message" class="error-message"></p>
+      </div>
+
+    </div>
+
+    <script>
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const errorMessage = urlParams.get('error');
+      if (errorMessage) {
+        const errorElement = document.getElementById('error-message');
+        errorElement.textContent = errorMessage;
+        var box = document.getElementById("error-box-login");
+        box.style.display = 'inline-block';
+      }
+
+      function goBack(){
+        window.history.go(-1);
+      }
+
+    </script>
+
+<%- include("template/footer"); %>
+

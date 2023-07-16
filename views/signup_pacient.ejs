@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Test de Pirámides y Palmeras - Registro</title>
+    <link rel="stylesheet" href="/css/loginstyle.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <%- include("template/navbar"); %>
+
+    <div class="formcontainer">
+      <h1>Regístrese</h1>
+      <form id="myForm" action="/paciente" method="POST">
+        <label>Nombre</label>
+        <input 
+          type="text" 
+          placeholder="Agregar nombre y apellidos"
+          name="name"
+        />
+        <label>DNI</label>
+        <input
+          type="text" 
+          placeholder="Agregar DNI"
+          name="dni" 
+          pattern="^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKET]$" 
+          required
+        />
+        <label>Email</label>
+        <input 
+          type="email"
+          placeholder="Agregar email"
+          name="email" 
+          required
+        />
+        <label>Contraseña</label>
+        <input
+         type="password" 
+         id="password"
+         placeholder="Agregar contraseña" 
+         />
+        <label>Confirmar contraseña</label>
+        <input 
+          type="password" 
+          id="confirmPassword"
+          placeholder="Confirmar contraseña"
+          name="password"/>
+        <input type="submit">
+      <closeform></closeform></form> 
+      <p>
+        ¿Ya se ha registrado? <a class="link" href="../login">Inicie sesión aquí</a>
+      </p>
+    </div>
+
+    <script>
+      const form = document.getElementById("myForm")
+      form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+          alert("Contraseña y confirmar contraseña no coinciden.");
+          document.getElementById("password").value = ""; // Clear password field
+          document.getElementById("confirmPassword").value = ""; // Clear confirm password field
+          document.getElementById("password").focus();
+          return;
+        }
+        else {
+          form.submit();
+        }
+      });
+
+    </script>
+
+<%- include("template/footer"); %>

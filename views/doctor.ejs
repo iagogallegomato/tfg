@@ -1,0 +1,38 @@
+<%- include("template/header", {titulo : 'Página del doctor'}); %>
+
+    <div class="centered">
+      <form action="./assign" method="GET">
+        <button class="button tiny-button space" type="submit">Assign pacients to you</button>
+      </form>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">DNI</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Email</th>
+              <th scope="col">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          <% if (arrayPacientes.length > 0) { %>
+              <% arrayPacientes.forEach(paciente => { %>
+                  <tr>
+                      <th scope="row"><%= paciente.dni %></th>
+                      <td><%= paciente.name %></td>
+                      <td><%= paciente.email %></td>
+                      <td>
+                        <form action="./checkResults" method="POST">
+                          <input type="hidden" value="<%=paciente.hash%>" name="hash">
+                          <button type="submit">Ver resultados</button>
+                        </form>
+                      </td>
+                    </tr>
+              <% }) %>
+          <% } %>
+
+          </tbody>
+        </table>
+    </div>
+
+<%- include("template/footer"); %>

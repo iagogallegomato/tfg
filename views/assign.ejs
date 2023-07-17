@@ -2,16 +2,16 @@
 
 <div class="container">
   <form action="./home" method="GET">
-    <button type="submit">See patients</button>
+    <button class="button tiny-button-doctor" type="submit">Ver mis pacientes</button>
   </form>
 
     <table class="table">
         <thead>
           <tr>
             <th scope="col">DNI</th>
-            <th scope="col">Name</th>
+            <th scope="col">Nombre</th>
             <th scope="col">Email</th>
-            <th scope="col">Action</th>
+            <th scope="col">Acción</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +25,7 @@
                     <td>
                       <form action="./assignToMe" method="POST">
                         <input type="hidden" name="hashPaciente" value="<%=paciente.hash%>">
-                        <input type="submit"/>
+                        <input class="button tiny-button-doctor" type="submit" value="Asignar"/>
                       </form>
                     </td>
                   </tr>

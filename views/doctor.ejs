@@ -2,7 +2,7 @@
 
     <div class="centered">
       <form action="./assign" method="GET">
-        <button class="button tiny-button space" type="submit">Assign pacients to you</button>
+        <button class="button tiny-button space" type="submit">Asignarme pacientes</button>
       </form>
       <table class="table">
           <thead>
@@ -24,7 +24,7 @@
                       <td>
                         <form action="./checkResults" method="POST">
                           <input type="hidden" value="<%=paciente.hash%>" name="hash">
-                          <button type="submit">Ver resultados</button>
+                          <button class="button tiny-button-doctor" type="submit">Ver resultados</button>
                         </form>
                       </td>
                     </tr>

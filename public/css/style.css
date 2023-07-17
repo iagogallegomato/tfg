@@ -88,7 +88,7 @@ img {
   }
 
   .tiny-button {
-    padding: 0.5vh 5vw;
+    padding: 0.5vh 4vw;
     margin: auto;
     margin-top: 2vh; 
     font-size: 1.5rem;
@@ -96,6 +96,12 @@ img {
 
   .tiny-button-notfound {
     font-size: 1.5rem;
+  }
+
+  .tiny-button-doctor {
+    padding: 2px 1rem;
+    margin: auto;
+    font-size: 1rem;
   }
 
   .canvas-container-res {
@@ -166,5 +172,9 @@ img {
 
   .space {
     margin-bottom: 2vh;
+  }
+
+  .space-left {
+    margin-left: 50rem;
   }
 

@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <%- include("template/navbar); %>
+    <%- include("template/navbar"); %>
 
     <div class="centered-canvas">
         <p></p>
@@ -51,7 +51,7 @@
                 const points = arrayResults.map(item => item.points);
                 const times = arrayResults.map(item => item.timeDuration);
                 
-                console.log(Math.floor(lastResult.timeDuration / 60).toString() + "." + Math.floor(lastResult.timeDuration % 60).toString());
+                console.log(Math.floor(lastResult.timeDuration/60).toString() + "." + Math.floor(lastResult.timeDuration%60).toString());
 
                 const lastTryData = {
                     labels: ['Respuestas correctas', 'Fallos', 'Omisiones', 'Puntos', 'Tiempo empleado'],
